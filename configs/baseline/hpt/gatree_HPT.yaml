@@ -1,0 +1,8 @@
+fixed_parameters:
+  max_depth: ${max_depth}
+  population_size: 10
+  max_iter: 100
+  mutation_probability: 0.1
+  elite_size: 1
+  selection_tournament_size: 2
+  objective: "bacc"

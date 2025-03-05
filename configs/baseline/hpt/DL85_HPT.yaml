@@ -1,0 +1,11 @@
+tunable_parameters:
+  min_sup:
+    type: int
+    min: 1
+    max: 10
+    log: False
+  
+
+fixed_parameters:
+  max_depth: ${max_depth}
+  time_limit: 60

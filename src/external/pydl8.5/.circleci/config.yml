@@ -1,0 +1,26 @@
+version: 2
+
+jobs:
+  python3:
+    docker:
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - run:
+          command: |
+            wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+            awk 'NR==1{print "#!/bin/bash"} NR>1' miniconda.sh > miniconda.tmp && mv miniconda.tmp miniconda.sh
+            chmod +x miniconda.sh && ./miniconda.sh -b -p ~/miniconda
+            export PATH="~/miniconda/bin:$PATH"
+            conda update --yes --quiet conda
+            conda create -n testenv --yes --quiet python=3.9
+            source activate testenv
+            conda install --yes pip numpy scipy scikit-learn matplotlib sphinx sphinx_rtd_theme numpydoc pillow setuptools cython sphinxcontrib
+            pip install sphinx-gallery sphinx_copybutton cvxpy
+            pip install .
+
+workflows:
+  version: 2
+  build-doc-and-deploy:
+    jobs:
+      - python3

@@ -1,0 +1,6 @@
+_target_: baselines.CART.CARTModel
+task_type: "regression"
+
+defaults:
+  - hpt: CART_REG_HPT
+  

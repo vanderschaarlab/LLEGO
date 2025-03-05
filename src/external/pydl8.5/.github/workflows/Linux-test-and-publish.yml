@@ -1,0 +1,90 @@
+name: Linux - Build and Publish on PyPI
+
+on:
+  push:
+    branches: [ master ]
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version: [ "3.8", "3.9", "3.10", "3.11" ]
+        architecture: [ x86_64 ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install GCC
+        uses: egor-tensin/setup-gcc@v1
+        with:
+          version: latest
+          platform: x64
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+
+      - name: Install dependencies and install the package from setup.py
+        run: |
+          if [ -f requirements.txt ]; then python3 -m pip install -r requirements.txt; fi
+          python3 -m pip install .
+
+      - name: Run tests, compute coverage and generate xml report
+        run: |
+          coverage run --source=tests/ -m pytest -v
+          coverage xml --data-file=.coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          fail_ci_if_error: true
+          name: codecov-umbrella
+          verbose: true
+
+      - name: Build a source tarball
+        run: |
+          python3 setup.py sdist --formats=gztar
+
+      - name: Build and repair binary wheel in a docker container
+        uses: docker://quay.io/pypa/manylinux2014_x86_64:latest
+        with:
+          args: bash -c "yum install -y python3-devel &&
+              python${{ matrix.python-version }} -m venv /venv &&
+              source /venv/bin/activate &&
+              curl https://bootstrap.pypa.io/pip/get-pip.py -o get-pip.py &&
+              python3 get-pip.py &&
+              if [ -f requirements.txt ]; then python3 -m pip install -r requirements.txt; fi &&
+              python3 -m pip install wheel auditwheel &&
+              python3 setup.py sdist bdist_wheel &&
+              auditwheel repair dist/*.whl &&
+              rm dist/*.whl &&
+              cp wheelhouse/*.whl dist/"
+
+      - name: Install twine
+        run: |
+          python3 -m pip install twine
+
+      - name: Publish 📦 on PyPI and/or on Test PyPI (if tag)
+        env:
+          TWINE_TEST_TOKEN: ${{ secrets.TEST_PYPI_PUSH_API_TOKEN }}
+          TWINE_TOKEN: ${{ secrets.PYPI_PUSH_API_TOKEN }}
+          PACKAGE_PATH: ${{ github.workspace }}/dist/*
+        run: |
+          if [[ "${{ github.ref }}" == "refs/tags/"* ]]; then
+            echo "Publishing on PyPI"
+            twine upload --verbose --skip-existing --repository pypi $PACKAGE_PATH -u __token__ -p $TWINE_TOKEN
+          fi
+          echo "Publishing on Test PyPI"
+          twine upload --verbose --skip-existing --repository testpypi $PACKAGE_PATH -u __token__ -p $TWINE_TEST_TOKEN

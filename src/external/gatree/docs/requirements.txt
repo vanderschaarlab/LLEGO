@@ -1,0 +1,6 @@
+Sphinx
+sphinx-rtd-theme
+scikit-learn
+scipy
+numpy
+pandas

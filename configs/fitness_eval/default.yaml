@@ -1,0 +1,6 @@
+_target_: llego.custom.fitness_evaluation.FitnessEvaluation
+_partial_: true
+fitness_metric: ${dataset.search_objective}
+complexity_metric: depth
+lower_is_better: ${dataset.lower_is_better}
+fairness_reg: null

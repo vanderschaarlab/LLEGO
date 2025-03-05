@@ -1,0 +1,10 @@
+_target_: llego.operators.crossover_operator.CrossoverOperator
+_partial_: true
+num_offspring: 2
+num_parents: 4
+ordering: increasing
+parent_sampling_strategy: global_fitness_weighted
+parent_sampling_kwargs: {"sampling_key": "${dataset.search_objective}_train"}
+fitness_key: "${dataset.search_objective}_train"
+lower_is_better: ${dataset.lower_is_better}
+alpha: 0.1

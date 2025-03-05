@@ -1,0 +1,4 @@
+dataset_name: "wage"
+search_objective: "mse"
+lower_is_better: true
+task_description: "The task is to predict worker wages based on a set of attributes from census data"

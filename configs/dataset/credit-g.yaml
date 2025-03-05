@@ -1,0 +1,6 @@
+dataset_name: "credit-g"
+search_objective: "balanced_accuracy"
+lower_is_better: false
+task_description: "The task is to classify people described by a set of attributes as good or bad credit risks"
+sensitive_attribute: "foreign_worker"
+sensitive_attribute_dl85: "foreign_worker_yes"

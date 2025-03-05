@@ -1,0 +1,4 @@
+dataset_name: "breast"
+search_objective: "balanced_accuracy"
+lower_is_better: false
+task_description: "The task is to classify cell nuclei as benign or malignant based on an image of a fine needle aspirate (FNA) of a breast mass"

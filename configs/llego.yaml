@@ -1,0 +1,36 @@
+# experimental settings
+seed: 0
+train_val_test_split: [0.2, 0.4, 0.4]
+exp_name: null
+max_depth: 3
+log_wandb: True
+include_task_semantics: True
+
+hydra:
+  run:
+    dir: ../results
+
+# llego algorithm hyper-parameters
+llego:
+  n_iterations: 25
+  pop_size: 25
+  n_offspring_mut: ${llego.pop_size}
+  n_offspring_xo: ${llego.pop_size}
+  use_crossover: True
+  use_mutation: True
+
+# llego algorithm components
+defaults:
+  - dataset: null
+  - pop_init: default
+  - fitness_eval: default
+  - prompts: default
+  - mutation: default
+  - crossover: default
+  - filter: default
+  - selection: default
+  - metrics_logger: default
+  - hof: default
+  - llm_api: default
+  - endpoint: default
+  

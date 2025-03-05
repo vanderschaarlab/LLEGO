@@ -1,0 +1,19 @@
+# experimental settings
+seed: 0
+train_val_test_split: [0.2, 0.4, 0.4]
+include_task_semantics: True
+
+
+n_trials_hpt: 20
+max_depth: 4
+use_sample_weights: false
+exp_name: 'testing'
+metric_name: 'balanced_accuracy'
+
+hydra:
+  run:
+    dir: ../results
+
+defaults:
+  - baseline: cart
+  - dataset: credit-g

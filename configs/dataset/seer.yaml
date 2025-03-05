@@ -1,0 +1,6 @@
+dataset_name: "seer"
+search_objective: "balanced_accuracy"
+lower_is_better: false
+task_description: "The task is to classify patient prostate cancer mortality based on a set of attributes"
+categorical_mask: [0, 0, 1, 1, 0, 0]
+attribute_names: ['age_at_diagnosis', 'psa', 'clinical_t_stage', 'histological_grade_group', 'num_cores_positive', 'num_cores_examined']

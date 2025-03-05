@@ -1,0 +1,7 @@
+_target_: baselines.CART.CARTModel
+task_type: "classification"
+
+
+defaults:
+  - hpt: CART_HPT
+  

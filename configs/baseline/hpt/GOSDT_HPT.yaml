@@ -1,0 +1,13 @@
+tunable_parameters:
+  regularization:
+    type: float
+    min: 0.001
+    max: 1
+    log: True
+  
+
+fixed_parameters:
+  depth_budget: ${max_depth}
+  time_limit: 60
+  diagnostics: True
+  objective: "bacc"

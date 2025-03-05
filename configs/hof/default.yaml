@@ -1,0 +1,4 @@
+_target_: llego.operators.hof.HallOfFame
+hof_size: null
+hof_metric: ${dataset.search_objective}_val
+lower_is_better: ${dataset.lower_is_better}

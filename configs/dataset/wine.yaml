@@ -1,0 +1,4 @@
+dataset_name: "wine"
+search_objective: "mse"
+lower_is_better: true
+task_description: "The task is to predict wine quality based on a set of attributes about the wine"

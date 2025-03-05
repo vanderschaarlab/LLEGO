@@ -1,0 +1,6 @@
+_target_: llego.operators.selection_operator.SelectionOperator
+sorting_key: ${dataset.search_objective}_train
+lower_is_better: ${dataset.lower_is_better}
+
+defaults:
+  - filter: default

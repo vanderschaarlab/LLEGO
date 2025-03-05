@@ -1,0 +1,9 @@
+mutation: | 
+  You are an expert in creating decision trees. {task_description}. The dataset contains {n_samples} samples and {n_attributes} features, of which {n_numerical} are numerical and {n_categorical} are categorical. The target variable is {target_name}, it is {target_type}, {label_information}. The features and their ranges are: {feature_semantics}. You should generate a diverse decision tree that is more interpretable. Please generate decision trees in the desired JSON format, you can use any of the features, but are only allowed to use operators [<, >, <=, >=]. Return only the JSON in the format ## tree ##.
+
+
+crossover: |
+  {task_description}. The dataset contains {n_samples} samples and {n_attributes} features, of which {n_numerical} are numerical and {n_categorical} are categorical. The target variable is {target_name}, it is {target_type}, {label_information}. The features and their ranges are: {feature_semantics}. Generate a different, interpretable decision tree which should have the improved fitness. Please generate decision trees in the desired JSON format, you can use any of the features, but are only allowed to use operators [<, >, <=, >=]. Do not return any explanation, return only the tree surrounded in the format ## tree ##.
+
+content: |
+  You are an expert in creating decision trees. 

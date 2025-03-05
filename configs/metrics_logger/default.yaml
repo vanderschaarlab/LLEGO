@@ -1,0 +1,4 @@
+_target_: llego.operators.metrics_logger.MetricsLogger
+log_wandb: ${log_wandb}
+defaults:
+  - filter: default

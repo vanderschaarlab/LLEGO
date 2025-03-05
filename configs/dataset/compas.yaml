@@ -1,0 +1,7 @@
+dataset_name: "compas"
+search_objective: "balanced_accuracy"
+lower_is_better: false
+task_description: "The task is to classify people as high or low risk of recidivism based on a set of attributes"
+categorical_mask: [1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1]
+sensitive_attribute: "race_African-American" # sex
+sensitive_attribute_dl85: "race_African-American_1"

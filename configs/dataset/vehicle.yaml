@@ -1,0 +1,4 @@
+dataset_name: "vehicle"
+search_objective: "balanced_accuracy"
+lower_is_better: false
+task_description: "The task is to classify vehicle types given a set of features extracted from the silhouette of the vehicle"

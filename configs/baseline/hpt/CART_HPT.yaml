@@ -1,0 +1,14 @@
+tunable_parameters:
+  min_samples_split:
+    type: int
+    min: 2
+    max: 16
+  min_samples_leaf:
+    type: int
+    min: 1
+    max: 16
+
+fixed_parameters:
+  criterion: 'gini'
+  splitter: 'best'
+  max_depth: ${max_depth}

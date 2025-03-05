@@ -1,0 +1,5 @@
+dataset_name: "liver"
+search_objective: "balanced_accuracy"
+lower_is_better: false
+task_description: "The task is to classify patients as liver patients or not based on a set of attributes"
+attribute_names: ['age', 'gender', 'total_bilirubin', 'direct_bilirubin', 'alkphos_alkaline_phosphatase', 'sgpt_alanine_aminotransferase', 'sgot_aspartate_aminotransferase', 'total_proteins', 'albumin', 'albumin_globulin_ratio']

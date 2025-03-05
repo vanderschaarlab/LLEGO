@@ -1,0 +1,5 @@
+_target_: baselines.GOSDT.GOSDTModel
+
+defaults:
+  - hpt: GOSDT_HPT
+  

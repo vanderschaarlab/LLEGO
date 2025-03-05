@@ -1,0 +1,5 @@
+dataset_name: "cholesterol"
+search_objective: "mse"
+lower_is_better: true
+task_description: "The task is to predict cholesterol levels based on a set of attributes for heart diesease patients"
+attribute_names: ['age', 'sex', 'chest_pain_type', 'resting_blood_pressure', 'fasting_blood_surgar', 'resting_ecg', 'max_heart_rate', 'exercise_induced_angina', 'st_depression_induced_by_rest', 'slope', 'num_major_vessels_colored_by_flourosopy', 'thal', 'angiographic disease status']

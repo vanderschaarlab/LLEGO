@@ -1,0 +1,10 @@
+_target_: llego.operators.mutation_operator.MutationOperator
+_partial_: true
+num_offspring: 2
+num_candidate_offspring: 4
+num_parents: 4
+ordering: random
+parent_sampling_strategy: global_random
+parent_sampling_kwargs: {}
+offspring_selection_strategy: logprob_weighted #random
+offspring_selection_kwargs: {"sampling_temperature": 10.} 

@@ -1,0 +1,26 @@
+seed: 0
+train_val_test_split: [0.2, 0.4, 0.4]
+exp_name: null
+max_depth: 3
+log_wandb: True
+include_task_semantics: True
+metric_key: "${dataset.search_objective}_train"
+
+hydra:
+  run:
+    dir: ./results
+
+# gatree algorithm settings
+gatree:
+  n_iterations: 25
+  pop_size: 25
+  mutation_probability: 0.2
+  elite_size: 5
+  selection_tournament_size: 2
+
+defaults:
+  - dataset: null
+  - pop_init: default
+  - fitness_eval: default
+  - metrics_logger: default
+  - hof: default

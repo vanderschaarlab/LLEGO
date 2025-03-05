@@ -1,0 +1,5 @@
+_target_: llego.custom.population_initialization.PopulationInitialization
+_partial_: true
+pop_init_f: cart
+seed: ${seed} 
+max_depth: ${max_depth}
