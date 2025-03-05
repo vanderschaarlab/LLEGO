@@ -3,6 +3,7 @@
     <a href="https://github.com/nicolashuynh/LLEGO/actions/workflows/python-app.yml/badge.svg"><img alt="Build" src="https://github.com/nicolashuynh/LLEGO/actions/workflows/python-app.yml/badge.svg"></a>
     <a href="https://github.com/nicolashuynh/LLEGO/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/nicolashuynh/LLEGO.svg?color=blue"></a>
 </p>
+
 Official code repository for our **ICLR'25** paper [Decision Tree Induction Through LLMs via Semantically-Aware Evolution](https://openreview.net/pdf?id=UyhRtB4hjN).
 
 **Authors:** Tennison Liu*, Nicolas Huynh*, Mihaela van der Schaar
