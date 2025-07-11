@@ -85,13 +85,33 @@ else:
 # if platform.system() == "Darwin":
 #     EXTENSION_BUILD_ARGS.append('-mmacosx-version-min=10.9')
 
+# 1) dl85Optimizer extension (everything except error_function.pyx)
 dl85_extension = Extension(
-    name=EXTENSION_NAME,
-    language=EXTENSION_LANGUAGE,
-    sources=EXTENSION_SOURCE_FILES,
-    include_dirs=EXTENSION_INCLUDE_DIR,  # path for headers
-    extra_compile_args=EXTENSION_BUILD_ARGS,
-    extra_link_args=EXTENSION_BUILD_ARGS
+  name='dl85Optimizer',
+  language='c++',
+  sources=[
+    'cython_extension/dl85Optimizer.pyx',
+    # all of your core/src/*.cpp files
+    'core/src/cache.cpp',
+    'core/src/cache_hash_cover.cpp',
+    # … etc …
+    'core/src/solution_Trie.cpp',
+  ],
+  include_dirs=EXTENSION_INCLUDE_DIR,
+  extra_compile_args=EXTENSION_BUILD_ARGS,
+  extra_link_args=EXTENSION_BUILD_ARGS,
+)
+
+# 2) error_function extension (just the wrapper .pyx)
+error_extension = Extension(
+  name='error_function',
+  language='c++',
+  sources=[
+    'cython_extension/error_function.pyx'
+  ],
+  include_dirs=EXTENSION_INCLUDE_DIR,
+  extra_compile_args=EXTENSION_BUILD_ARGS,
+  extra_link_args=EXTENSION_BUILD_ARGS,
 )
 
 setup(
